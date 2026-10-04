@@ -47,9 +47,9 @@
   .nav-cta:hover { background: var(--white); }
 
   /* Hero */
-  .hero { background: var(--burgundy-deep); background-image: radial-gradient(circle at 85% 20%, rgba(142,205,240,0.18), transparent 45%), radial-gradient(circle at 10% 90%, rgba(122,31,61,0.9), transparent 55%); color: var(--white); padding: 5rem 0 6rem; overflow: hidden; }
+  .hero { background: var(--burgundy-deep); background-image: radial-gradient(circle at 85% 20%, rgba(142,205,240,0.18), transparent 45%), radial-gradient(circle at 10% 90%, rgba(122,31,61,0.9), transparent 55%); }
   .hero .container { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; }
-  .hero-kicker { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(142,205,240,0.15); color: var(--sky); padding: 0.4rem 0.9rem; border-radius: 999px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1.5rem; }
+  .hero-kicker { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(142,205,240,0.15); color: var(--sky); padding: 0.4rem 0.9rem; border-radius: 999px; font-size: 0.9rem; font-weight: 700; }
   .dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: #6EE7A8; }
   .hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.75rem, 6vw, 4.5rem); letter-spacing: -0.01em; }
   .hero-role { font-size: clamp(1.25rem, 2.2vw, 1.5rem); color: var(--sky); font-weight: 600; margin: 0.75rem 0 1.25rem; }
@@ -87,9 +87,9 @@
 
   /* About */
   .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 4rem; align-items: start; }
-  .about-photo { aspect-ratio: 4 / 5; border-radius: 20px; background: linear-gradient(160deg, var(--burgundy), var(--burgundy-deep)); display: grid; place-items: center; color: var(--sky); font-family: var(--serif); font-size: 5rem; position: relative; overflow: hidden; }
+  .about-photo { position: relative; aspect-ratio: 4 / 5; border-radius: 20px; overflow: hidden; background: linear-gradient(160deg, var(--burgundy), var(--burgundy-deep)); display: grid; place-items: center; box-shadow: 0 18px 42px rgba(74, 16, 36, 0.18); }
   .about-photo::after { content: ""; position: absolute; width: 60%; height: 60%; right: -15%; bottom: -15%; border-radius: 50%; background: rgba(142,205,240,0.18); }
-  .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; position: relative; z-index: 1; }
   .about-text p { margin: 0 0 1.1rem; }
   .about-text .lead { font-size: 1.3rem; color: var(--burgundy-deep); font-weight: 600; line-height: 1.5; }
 
@@ -97,7 +97,7 @@
   .process { background: var(--burgundy-tint); }
   .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; counter-reset: step; }
   .step { background: var(--white); border-radius: 16px; padding: 1.5rem; position: relative; }
-  .step::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--burgundy); color: var(--white); font-weight: 800; margin-bottom: 1rem; }
+  .step::before { counter-increment: step; content: counter(step); display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--burgundy); color: var(--white); font-weight: 800; margin-bottom: 0.9rem; }
   .step h3 { font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--burgundy-deep); }
   .step p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 
@@ -226,18 +226,15 @@
 </div>
 
 <section id="about">
- <div class="about-photo">
-  <img src="chidonwa.jpeg.jpg" alt="Chidiebere Mmuomaife">
-</div>
-    
-      <!-- To add your photo: upload photo.jpg to this repo, then replace "CM" above with:
-           <img src="chidonwa.jpeg.jpg" alt="Chidiebere Mmuomaife"> -->
+  <div class="container about-grid">
+    <div class="about-photo">
+      <img src="chidonwa.jpeg.jpg" alt="Chidiebere Mmuomaife">
     </div>
     <div class="about-text">
       <h2>About me</h2>
       <p class="lead" style="margin-top:1.25rem">I'm a product analyst who cares about the "why" behind the numbers.</p>
-      <p>My work starts with a business question, not a dashboard. I map how users move through a product, find where they get stuck, and turn that into recommendations a team can act on, often in the form of an experiment.</p>
-      <p>I'm especially careful with data quality. On live product data, I've caught duplicate tracking events, events that fire automatically, and screens that only some users see, all of which would have quietly distorted the results.</p>
+      <p>My work starts with a business question, not a dashboard. I map how users move through a product, find where they get stuck, and turn that into recommendations a team can act on, often in the right sequence to improve the outcome.</p>
+      <p>I'm especially careful with data quality. On live product data, I've caught duplicate tracking events, events that fire automatically, and screens that only some users see, all of which would distort the story if left unchecked.</p>
       <p>I work mainly with SQL, Python, and PostHog, and I write up my analysis so that anyone on the team can follow the reasoning.</p>
     </div>
   </div>
@@ -320,7 +317,7 @@
               <li>Checked engagement with a Mann-Whitney U test, since game rounds were heavily skewed.</li>
             </ul>
             <h4>What I found</h4>
-            <p>The later gate lowered 7-day retention from 19.0% to 18.2%, with gate 30 ahead in about 99% of bootstrap samples. The sample ratio check flagged a small imbalance, which I sized and addressed rather than ignored.</p>
+            <p>The later gate lowered 7-day retention from 19.0% to 18.2%, with gate 30 ahead in about 99% of bootstrap samples. The sample ratio check flagged a small imbalance, which I sized and addressed before running the main analysis.</p>
             <h4>Recommendation</h4>
             <p>Keep the gate at level 30, verify the assignment logic, and test dynamic gates that give fast-progressing players an earlier break.</p>
           </div>
@@ -344,9 +341,9 @@
     <h2>Skills and tools</h2>
     <p class="section-intro">What I use to go from raw events to a decision.</p>
     <div class="skill-groups">
-      <div class="skill-group"><h3><i></i>Analysis</h3><div class="chips"><span class="chip">Funnel analysis</span><span class="chip">Retention and cohorts</span><span class="chip">Path analysis</span><span class="chip">Data quality checks</span><span class="chip">Metric design</span></div></div>
-      <div class="skill-group"><h3><i></i>Experimentation</h3><div class="chips"><span class="chip">A/B test design</span><span class="chip">Sample size and power</span><span class="chip">Hypothesis testing</span><span class="chip">Bootstrapping</span><span class="chip">Guardrail metrics</span></div></div>
-      <div class="skill-group"><h3><i></i>Tools</h3><div class="chips"><span class="chip">SQL and HogQL</span><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">SciPy and statsmodels</span><span class="chip">PostHog</span><span class="chip">Google Analytics 4</span><span class="chip">Google Colab</span><span class="chip">GitHub</span></div></div>
+      <div class="skill-group"><h3><i></i>Analysis</h3><div class="chips"><span class="chip">Funnel analysis</span><span class="chip">Retention and cohorts</span><span class="chip">Path analysis</span><span class="chip">Dashboard QA</span></div></div>
+      <div class="skill-group"><h3><i></i>Experimentation</h3><div class="chips"><span class="chip">A/B test design</span><span class="chip">Sample size and power</span><span class="chip">Hypothesis testing</span><span class="chip">Experiment readouts</span></div></div>
+      <div class="skill-group"><h3><i></i>Tools</h3><div class="chips"><span class="chip">SQL and HogQL</span><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">SciPy and statsmodels</span><span class="chip">PostHog</span></div></div>
     </div>
   </div>
 </section>
